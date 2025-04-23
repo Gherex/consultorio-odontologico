@@ -1,0 +1,24 @@
+package com.gherex.logic;
+
+import java.util.Date;
+
+public class Responsable extends Persona {
+
+    private String tipoResponsabilidad;
+
+    public Responsable() {
+    }
+
+    public Responsable(String dni, String nombre, String apellido, String telefono, String direccion, Date fechaNacimiento, String tipoResponsabilidad) {
+        super(dni, nombre, apellido, telefono, direccion, fechaNacimiento);
+        this.tipoResponsabilidad = tipoResponsabilidad;
+    }
+
+    public String getTipoResponsabilidad() {
+        return tipoResponsabilidad;
+    }
+
+    public void setTipoResponsabilidad(String tipoResponsabilidad) {
+        this.tipoResponsabilidad = tipoResponsabilidad;
+    }
+}
