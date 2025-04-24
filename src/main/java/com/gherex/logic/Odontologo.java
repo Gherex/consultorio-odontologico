@@ -1,13 +1,26 @@
 package com.gherex.logic;
 
+import jakarta.persistence.*;
+
 import java.util.Date;
 import java.util.List;
 
+@Entity
+@PrimaryKeyJoinColumn(name = "persona_id")
+@Table(name = "odontologos")
 public class Odontologo extends Persona {
 
     private String especialidad;
+
+    @OneToMany(mappedBy = "unOdontologo")
     private List<Turno> listaTurnos;
+
+    @OneToOne
+    @JoinColumn(name = "usuario_id") // FK hacia Usuario
     private Usuario unUsuario;
+
+    @OneToOne
+    @JoinColumn(name = "horario_id") // FK hacia Horario
     private Horario unHorario;
 
     public Odontologo() {

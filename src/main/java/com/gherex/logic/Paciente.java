@@ -1,13 +1,23 @@
 package com.gherex.logic;
 
+import jakarta.persistence.*;
+
 import java.util.Date;
 import java.util.List;
 
+@Entity
+@PrimaryKeyJoinColumn(name = "persona_id")
+@Table(name = "pacientes")
 public class Paciente extends Persona {
 
+    @Column(name = "tiene_obra_social")
     private boolean tieneObraSocial;
+    @Column(name = "tipo_sangre")
     private String tipoSangre;
+    @OneToOne
+    @JoinColumn(name = "un_responsable")
     private Responsable unResponsable;
+    @OneToMany (mappedBy = "unPaciente")
     private List<Turno> listaTurnos;
 
     public Paciente() {

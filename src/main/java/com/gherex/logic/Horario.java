@@ -1,9 +1,17 @@
 package com.gherex.logic;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "horarios")
 public class Horario {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(name = "horario_inicio")
     private String horarioInicio;
+    @Column(name = "horario_fin")
     private String horarioFin;
 
     public Horario() {

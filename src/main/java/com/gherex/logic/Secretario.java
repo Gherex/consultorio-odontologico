@@ -1,10 +1,17 @@
 package com.gherex.logic;
 
+import jakarta.persistence.*;
+
 import java.util.Date;
 
+@Entity
+@PrimaryKeyJoinColumn(name = "persona_id")
+@Table(name = "secretarios")
 public class Secretario extends Persona {
 
     private String sector;
+    @OneToOne
+    @JoinColumn(name = "un_usuario")
     private Usuario unUsuario;
 
     public Secretario() {

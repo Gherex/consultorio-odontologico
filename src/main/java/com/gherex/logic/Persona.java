@@ -1,15 +1,25 @@
 package com.gherex.logic;
 
+import jakarta.persistence.*;
+
 import java.util.Date;
 
-public class Persona {
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "personas")
+public abstract class Persona {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Basic
     private String dni;
     private String nombre;
     private String apellido;
     private String telefono;
     private String direccion;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "fecha_nacimiento")
     private Date fechaNacimiento;
 
     public Persona() {
