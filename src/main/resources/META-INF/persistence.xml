@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="https://jakarta.ee/xml/ns/persistence"
              version="3.0">
-    <persistence-unit name="ClinicaPU">
+    <persistence-unit name="ClinicaOdontologicaPU">
         <class>com.gherex.logic.Persona</class>
         <class>com.gherex.logic.Usuario</class>
         <class>com.gherex.logic.Odontologo</class>
@@ -12,7 +12,8 @@
         <class>com.gherex.logic.Horario</class>
         <properties>
             <!-- JDBC -->
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/clinica_odontologica"/>
+            <property name="jakarta.persistence.jdbc.url"
+                      value="jdbc:mysql://localhost:3306/clinica_odontologica?serverTimezone=UTC"/>
             <property name="jakarta.persistence.jdbc.usuario" value="root"/>
             <property name="jakarta.persistence.jdbc.password" value=""/>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
