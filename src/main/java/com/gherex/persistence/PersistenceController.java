@@ -22,6 +22,9 @@ public class PersistenceController {
     private final TurnoJpaController turnoJpa = new TurnoJpaController();
     private final HorarioJpaController horarioJpa = new HorarioJpaController();
 
+    public PersistenceController() {
+    }
+
     public void createPersona(Persona per) {
         personaJpa.create(per);
     }
@@ -195,6 +198,5 @@ public class PersistenceController {
     public List<Horario> getAllHorarios() {
         return horarioJpa.findHorarioEntities();
     }
-
 
 }
