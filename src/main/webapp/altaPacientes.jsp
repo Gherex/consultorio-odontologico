@@ -3,11 +3,11 @@
 <html lang="en">
     <%@include file="components/header.jsp"%>
     <%@include file="components/wrapper-top-content.jsp"%>
-    <h1>Alta Odontólogos</h1>
-    <p class="mb-3">Este es el apartado para dar de alta los diferentes odontólogos del sistema.</p>
+    <h1>Alta Pacientes</h1>
+    <p class="mb-3">Este es el apartado para dar de alta los diferentes pacientes del sistema.</p>
 
     <div class="container pt-4 w-50">
-        <form class="user" action="SvOdontologos" method="POST">
+        <form class="user" action="SvPacientes" method="POST">
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                     <input type="text" class="form-control form-control-user" id="nombre" name="nombre"
@@ -38,23 +38,23 @@
                         placeholder="Fecha de nacimiento">
                 </div>
             </div>
-            <div class="form-group">
-                <input type="email" class="form-control form-control-user" id="especialidad" name="especialidad"
-                    placeholder="Especialidad">
-            </div>
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user" id="usuario" name="usuario"
-                        placeholder="Usuario">
+                    <input type="text" class="form-control form-control-user" id="tieneObraSocial" name="tieneObraSocial"
+                        placeholder="Tiene Obra Social">
                 </div>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control form-control-user" id="horario" name="horario"
-                        placeholder="Horario">
+                    <input type="text" class="form-control form-control-user" id="tipoSangre" name="tipoSangre"
+                        placeholder="Tipo de Sangre">
                 </div>
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control form-control-user" id="responsable" name="responsable"
+                    placeholder="Responsable">
             </div>
 
             <button class="btn btn-primary btn-user btn-block mt-4" type="submit">
-                Crear Odontólogo
+                Crear Paciente
             </button>
 
         </form>

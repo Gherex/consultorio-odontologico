@@ -24,8 +24,11 @@
                         <h1 class="h3 mb-0 text-gray-800">Clínica Odontológica</h1>
                     </div>
 
-                    <!-- ACÁ VA A IR MI CONTENIDO PRINCIPAL -->
-                    <img src="https://cdn.euroinnova.edu.es/img/subidasEditor/cual-es-la-diferencia-entre-un-dentista-y-un-odontologo-2-1596471046.jpg" alt="Imagen de un odontólogo" />
+                    <!-- ACÁ VA MI CONTENIDO PRINCIPAL -->
+                    <img src="https://cdn.euroinnova.edu.es/img/subidasEditor/cual-es-la-diferencia-entre-un-dentista-y-un-odontologo-2-1596471046.jpg"
+                         alt="Imagen de un odontólogo"
+                         style="width: 60%; padding-bottom: 16px;"
+                    />
 
                 </div>
                 <!-- /.container-fluid -->

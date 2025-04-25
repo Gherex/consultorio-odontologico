@@ -11,11 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
-@WebServlet(name = "SvUsuarios", urlPatterns = {"/SvUsuarios"})
-public class SvUsuarios extends HttpServlet {
+@WebServlet(name = "SvEditarUsuario", urlPatterns = {"/SvEditarUsuario"})
+public class SvEditarUsuario extends HttpServlet {
 
     LogicController logicControl = new LogicController();
 
@@ -23,24 +21,33 @@ public class SvUsuarios extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        List<Usuario> listaUsuarios = new ArrayList<Usuario>();
-        listaUsuarios = logicControl.getUsuarios();
+        Integer id = Integer.parseInt(request.getParameter("id"));
+
+        Usuario usu = logicControl.getUsuario(id);
 
         HttpSession miSesion = request.getSession();
-        miSesion.setAttribute("listaUsuarios", listaUsuarios);
+        miSesion.setAttribute("usuEdit",usu);
 
-        response.sendRedirect("verUsuarios.jsp");
+        response.sendRedirect("editarUsuarios.jsp");
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String nombreUsuario = request.getParameter("usuario");
-        String contrasenia = request.getParameter("contrasenia");
-        String rol = request.getParameter("rol");
+        Usuario usu = (Usuario) request.getSession().getAttribute("usuEdit");
 
-        logicControl.crearUsuario(nombreUsuario, contrasenia, rol);
+        String newUser = request.getParameter("usuario");
+        String newPass = request.getParameter("contrasenia");
+        String newRol = request.getParameter("rol");
+
+        usu.setNombreUsuario(newUser);
+        usu.setContrasenia(newPass);
+        usu.setRol(newRol);
+
+        logicControl.modificarUsuario(usu);
+
         response.sendRedirect("SvUsuarios");
+
     }
 }

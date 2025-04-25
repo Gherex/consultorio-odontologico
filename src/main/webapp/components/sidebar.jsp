@@ -38,7 +38,7 @@
         <div id="collapseOdo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Acciones:</h6>
-                <a class="collapse-item" href="buttons.html">Ver Odontólogos</a>
+                <a class="collapse-item" href="SvOdontologos">Ver Odontólogos</a>
                 <a class="collapse-item" href="altaOdontologos.jsp">Alta Odontólogos</a>
             </div>
         </div>
@@ -55,8 +55,8 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Acciones:</h6>
-                <a class="collapse-item" href="utilities-color.html">Ver Pacientes</a>
-                <a class="collapse-item" href="utilities-border.html">Alta Pacientes</a>
+                <a class="collapse-item" href="SvPacientes">Ver Pacientes</a>
+                <a class="collapse-item" href="altaPacientes.jsp">Alta Pacientes</a>
             </div>
         </div>
     </li>
@@ -72,7 +72,7 @@
                 data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Acciones:</h6>
-                    <a class="collapse-item" href="utilities-color.html">Ver Usuarios</a>
+                    <a class="collapse-item" href="SvUsuarios">Ver Usuarios</a>
                     <a class="collapse-item" href="altaUsuarios.jsp">Alta Usuarios</a>
                 </div>
             </div>
