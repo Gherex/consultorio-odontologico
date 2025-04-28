@@ -2,6 +2,7 @@ package com.gherex.logic;
 
 import com.gherex.persistence.PersistenceController;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -74,5 +75,19 @@ public class LogicController {
 
     public void modificarPaciente(Paciente pac) {
         persisControl.updatePaciente(pac);
+    }
+
+    public boolean comprobarIngreso(String usuario, String contrasenia) {
+
+        List<Usuario> listaUsuarios = new ArrayList<Usuario>();
+        listaUsuarios = persisControl.getAllUsuarios();
+
+        for (Usuario usu : listaUsuarios) {
+            if (usu.getNombreUsuario().equals(usuario)) {
+                if (usu.getContrasenia().equals(contrasenia)) return true;
+            }
+        }
+
+        return false;
     }
 }

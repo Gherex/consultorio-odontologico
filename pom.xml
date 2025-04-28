@@ -64,6 +64,7 @@
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
                 <configuration>
+                    <path>/</path> <!-- context-path: raíz -->
                     <port>8080</port>
                 </configuration>
             </plugin>

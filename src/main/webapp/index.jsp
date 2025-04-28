@@ -4,6 +4,15 @@
 <%@include file="components/header.jsp"%>
 <body id="page-top">
 
+    <!-- Validación de sesión -->
+    <%
+        HttpSession miSesion = request.getSession();
+        String usuario = (String) request.getSession().getAttribute("usuario");
+        if (usuario==null){
+            response.sendRedirect("sinLogin.jsp");
+        }
+    %>
+
     <!-- Page Wrapper -->
     <div id="wrapper">
 
