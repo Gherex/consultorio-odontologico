@@ -12,14 +12,17 @@
 
     <title>Login - Clínica Odontológica</title>
 
+    <!-- Favicon (ícono de la pestaña) -->
+    <link rel="icon" href="https://images.icon-icons.com/2466/PNG/512/dental_tooth_icon_149293.png" type="image/png">
+
     <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
@@ -48,7 +51,7 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Bienvenido</h1>
                                     </div>
-                                    <form class="user" action="SvLogin" method="POST">
+                                    <form class="user" action="login" method="POST">
                                         <div class="form-group">
                                             <input type="usuario" class="form-control form-control-user"
                                                 id="usuario" name="usuario" aria-describedby="emailHelp"
@@ -75,14 +78,14 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="${pageContext.request.contextPath}/vendor/jquery/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="${pageContext.request.contextPath}/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/sb-admin-2.min.js"></script>
 
 </body>
 

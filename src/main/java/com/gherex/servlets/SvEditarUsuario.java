@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebServlet(name = "SvEditarUsuario", urlPatterns = {"/SvEditarUsuario"})
+@WebServlet(name = "SvEditarUsuario", urlPatterns = {"/admin/usuarios/editar"})
 public class SvEditarUsuario extends HttpServlet {
 
     LogicController logicControl = new LogicController();
@@ -47,7 +47,7 @@ public class SvEditarUsuario extends HttpServlet {
 
         logicControl.modificarUsuario(usu);
 
-        response.sendRedirect("SvUsuarios");
+        response.sendRedirect(request.getContextPath() + "/usuarios");
 
     }
 }

@@ -1,13 +1,14 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
     <%@include file="components/header.jsp"%>
     <%@include file="components/wrapper-top-content.jsp"%>
+
     <h1>Alta Odontólogos</h1>
     <p class="mb-3">Este es el apartado para dar de alta los diferentes odontólogos del sistema.</p>
 
     <div class="container pt-4 w-50">
-        <form class="user" action="SvOdontologos" method="POST">
+        <form class="user" action="admin/odontologos/crear" method="POST">
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                     <input type="text" class="form-control form-control-user" id="nombre" name="nombre"
@@ -60,4 +61,3 @@
         </form>
     </div>
     <%@include file="components/wrapper-bottom-content.jsp"%>
-</html>

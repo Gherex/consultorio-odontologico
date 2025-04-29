@@ -7,7 +7,7 @@
     <p class="mb-3">Este es el apartado para dar de alta los diferentes pacientes del sistema.</p>
 
     <div class="container pt-4 w-50">
-        <form class="user" action="SvPacientes" method="POST">
+        <form class="user" action="/admin/pacientes/crear" method="POST">
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                     <input type="text" class="form-control form-control-user" id="nombre" name="nombre"

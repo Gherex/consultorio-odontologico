@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "SvEliminarOdontologo", urlPatterns = {"/SvEliminarOdontologo"})
+@WebServlet(name = "SvEliminarOdontologo", urlPatterns = {"/admin/odontologos/eliminar"})
 public class SvEliminarOdontologo extends HttpServlet {
 
     LogicController logicControl = new LogicController();
@@ -27,6 +27,7 @@ public class SvEliminarOdontologo extends HttpServlet {
         Integer id = Integer.parseInt(request.getParameter("id"));
         logicControl.eliminarOdontologo(id);
 
-        response.sendRedirect("SvOdontologos");
+        response.sendRedirect(request.getContextPath() + "/odontologos");
+
     }
 }

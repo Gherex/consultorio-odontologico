@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@WebServlet(name = "SvEditarPaciente", urlPatterns = {"/SvEditarPaciente"})
+@WebServlet(name = "SvEditarPaciente", urlPatterns = {"/pacientes/editar"})
 public class SvEditarPaciente extends HttpServlet {
 
     LogicController logicControl = new LogicController();
@@ -82,7 +82,7 @@ public class SvEditarPaciente extends HttpServlet {
 
         logicControl.modificarPaciente(pac);
 
-        response.sendRedirect("SvOdontologos");
+        response.sendRedirect(request.getContextPath() + "/pacientes");
 
     }
 }

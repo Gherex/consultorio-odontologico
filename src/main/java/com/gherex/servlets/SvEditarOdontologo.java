@@ -15,7 +15,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@WebServlet(name = "SvEditarOdontologo", urlPatterns = {"/SvEditarOdontologo"})
+@WebServlet(name = "SvEditarOdontologo", urlPatterns = {"/admin/odontologos/editar"})
 public class SvEditarOdontologo extends HttpServlet {
 
     LogicController logicControl = new LogicController();
@@ -70,7 +70,6 @@ public class SvEditarOdontologo extends HttpServlet {
 
         logicControl.modificarOdontologo(odo);
 
-        response.sendRedirect("SvOdontologos");
-
+        response.sendRedirect(request.getContextPath() + "/odontologos");
     }
 }

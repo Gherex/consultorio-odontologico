@@ -33,32 +33,41 @@
                     </tfoot>
                     <tbody>
                     <%
-                    List<Paciente> listaPacientes = (List<Paciente>) request.getSession().getAttribute("listaPacientes");
-                    for (Paciente pac : listaPacientes) {
+                        List<Paciente> listaPacientes = (List<Paciente>) request.getAttribute("listaPacientes");
+                        if (listaPacientes != null) {
+                            for (Paciente pac : listaPacientes) {
+                    %>
+                                <tr>
+                                    <td><%= pac.getIdPersona() %></td>
+                                    <td><%= pac.getUnResponsable() != null ? pac.getUnResponsable().getIdPersona() : "Sin responsable" %></td>
+                                    <td><%= pac.getTipoSangre() %></td>
+                                    <td><%= pac.isTieneObraSocial() ? "Sí" : "No" %></td>
+                                    <td style="display: flex; width: 230px;">
+                                        <form name="eliminar" action="pacientes/eliminar" method="POST">
+                                            <input type="hidden" name="id" value="<%= pac.getIdPersona() %>">
+                                            <button type="submit" class="btn btn-danger" style="width: 110px;">
+                                                <i class="fas fa-trash-alt"></i> Eliminar
+                                            </button>
+                                        </form>
+                                        <form name="editar" action="pacientes/editar" method="GET">
+                                            <input type="hidden" name="id" value="<%= pac.getIdPersona() %>">
+                                            <button type="submit" class="btn btn-primary" style="width: 110px; margin-left: 10px;">
+                                                <i class="fas fa-pencil-alt"></i> Editar
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                    <%
+                            }
+                        } else {
                     %>
                         <tr>
-                            <td><%= pac.getIdPersona() %></td>
-                            <td><%= pac.getUnResponsable().getIdPersona() %></td>
-                            <td><%= pac.getTipoSangre() %></td>
-                            <td><%= pac.isTieneObraSocial() %></td>
-
-                            <td style="display: flex; width: 230px;">
-                                <form name="eliminar" action="SvEliminarPaciente" method="POST">
-                                    <button type="submit" class="btn btn-primary btn-user btn-block" style="background-color: #cd4848; margin-right: 5px; width: 110px;">
-                                        <i class="fas fa-trash-alt"></i> Eliminar
-                                    </button>
-                                    <input type="hidden" name="id" value="<%= pac.getIdPersona() %>"> <!-- esto es para mandar info al servlet -->
-                                </form>
-                                <form name="editar" action="SvEditarPaciente" method="GET">
-                                    <button type="submit" class="btn btn-primary btn-user btn-block" style="margin-left: 5px; width: 110px;">
-                                        <i class="fas fa-pencil-alt"></i> Editar
-                                    </button>
-                                    <input type="hidden" name="id" value="<%= pac.getIdPersona() %>"> <!-- esto es para mandar info al servlet -->
-                                </form>
-                            </td>
-
+                            <td colspan="5">No se encontraron pacientes.</td>
                         </tr>
-                    <% } %>
+                    <%
+                        }
+                    %>
+
                     </tbody>
                 </table>
             </div>

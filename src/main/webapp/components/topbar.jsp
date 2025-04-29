@@ -18,10 +18,10 @@
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><%= request.getSession().getAttribute("usuario")%></span>
                 <img class="img-profile rounded-circle"
-                    src="img/undraw_profile.svg">
+                    src="${pageContext.request.contextPath}/img/undraw_profile.svg">
             </a>
             <!-- Dropdown - User Information -->
-            <form action="SvLogin" method="GET" class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+            <form action="/login" method="GET" class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                 aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>

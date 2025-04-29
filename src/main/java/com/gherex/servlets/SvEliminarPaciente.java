@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "SvEliminarPaciente", urlPatterns = {"/SvEliminarPaciente"})
+@WebServlet(name = "SvEliminarPaciente", urlPatterns = {"/pacientes/eliminar"})
 public class SvEliminarPaciente extends HttpServlet {
 
     LogicController logicControl = new LogicController();

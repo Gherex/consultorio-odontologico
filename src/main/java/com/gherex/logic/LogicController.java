@@ -90,4 +90,18 @@ public class LogicController {
 
         return false;
     }
+
+    public String obtenerRol(String usuario, String contrasenia) {
+
+        List<Usuario> listaUsuarios = new ArrayList<Usuario>();
+        listaUsuarios = persisControl.getAllUsuarios();
+
+        for (Usuario usu : listaUsuarios) {
+            if (usu.getNombreUsuario().equals(usuario)) {
+                if (usu.getContrasenia().equals(contrasenia)) return usu.getRol();
+            }
+        }
+
+        return "guest";
+    }
 }

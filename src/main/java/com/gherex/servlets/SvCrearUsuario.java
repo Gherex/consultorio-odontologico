@@ -10,24 +10,26 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "SvEliminarUsuario", urlPatterns = {"/admin/usuarios/eliminar"})
-public class SvEliminarUsuario extends HttpServlet {
+@WebServlet(name = "SvCrearUsuario", urlPatterns = {"/admin/usuarios/crear"})
+public class SvCrearUsuario extends HttpServlet {
 
     LogicController logicControl = new LogicController();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.getRequestDispatcher("/altaUsuarios.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        Integer id = Integer.parseInt(request.getParameter("id"));
-        logicControl.eliminarUsuario(id);
+        String nombreUsuario = request.getParameter("usuario");
+        String contrasenia = request.getParameter("contrasenia");
+        String rol = request.getParameter("rol");
 
+        logicControl.crearUsuario(nombreUsuario, contrasenia, rol);
         response.sendRedirect(request.getContextPath() + "/usuarios");
-
     }
 }

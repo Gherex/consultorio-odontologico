@@ -12,6 +12,9 @@
 
     <title>Login Error - Clínica Odontológica</title>
 
+    <!-- Favicon (ícono de la pestaña) -->
+    <link rel="icon" href="https://images.icon-icons.com/2466/PNG/512/dental_tooth_icon_149293.png" type="image/png">
+
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -51,7 +54,7 @@
                                     <br>
                                     <p><span style="color: darkred; font-weight:bold;">Error!</span> Necesita estar logueado para ingresar al sistema.</p>
                                     <br>
-                                    <a href="login.jsp" class="btn btn-primary btn-user btn-block">
+                                    <a href="/login" class="btn btn-primary btn-user btn-block">
                                         Volver al login
                                     </a>
                                 </div>

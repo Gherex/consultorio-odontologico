@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 
-@WebServlet(name = "SvLogin", urlPatterns = {"/SvLogin"})
+@WebServlet(name = "SvLogin", urlPatterns = {"/login"})
 public class SvLogin extends HttpServlet {
 
     LogicController logicControl = new LogicController();
@@ -21,8 +21,9 @@ public class SvLogin extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession miSesion = request.getSession();
-        miSesion.removeAttribute("usuario");
-        response.sendRedirect("login.jsp");
+        if (miSesion.getAttribute("usuario") != null) miSesion.removeAttribute("usuario");
+        if (miSesion.getAttribute("rol") != null) miSesion.removeAttribute("rol");
+        request.getRequestDispatcher("/login.jsp").forward(request, response);
     }
 
     @Override
@@ -36,11 +37,14 @@ public class SvLogin extends HttpServlet {
         validacion = logicControl.comprobarIngreso(usuario, contrasenia);
 
         if (validacion) {
+            String rol;
+            rol = logicControl.obtenerRol(usuario, contrasenia);
             HttpSession miSesion = request.getSession(true);
             miSesion.setAttribute("usuario", usuario);
-            response.sendRedirect("index.jsp");
+            miSesion.setAttribute("rol", rol);
+            response.sendRedirect(request.getContextPath() + "/inicio");
         } else {
-            response.sendRedirect("loginError.jsp");
+            response.sendRedirect(request.getContextPath() + "/login-error");
         }
     }
 }

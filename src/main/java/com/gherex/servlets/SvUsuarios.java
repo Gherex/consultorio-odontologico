@@ -8,13 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "SvUsuarios", urlPatterns = {"/SvUsuarios"})
+@WebServlet(name = "SvUsuarios", urlPatterns = {"/usuarios"})
 public class SvUsuarios extends HttpServlet {
 
     LogicController logicControl = new LogicController();
@@ -26,21 +25,13 @@ public class SvUsuarios extends HttpServlet {
         List<Usuario> listaUsuarios = new ArrayList<Usuario>();
         listaUsuarios = logicControl.getUsuarios();
 
-        HttpSession miSesion = request.getSession();
-        miSesion.setAttribute("listaUsuarios", listaUsuarios);
-
-        response.sendRedirect("verUsuarios.jsp");
+        request.setAttribute("listaUsuarios", listaUsuarios);
+        request.getRequestDispatcher("verUsuarios.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        String nombreUsuario = request.getParameter("usuario");
-        String contrasenia = request.getParameter("contrasenia");
-        String rol = request.getParameter("rol");
-
-        logicControl.crearUsuario(nombreUsuario, contrasenia, rol);
-        response.sendRedirect("SvUsuarios");
+        response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED, "POST no permitido en esta ruta");
     }
 }

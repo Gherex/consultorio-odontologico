@@ -3,7 +3,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a draggable="false" class="sidebar-brand d-flex align-items-center justify-content-center" href="index.jsp">
+    <a draggable="false" class="sidebar-brand d-flex align-items-center justify-content-center" href="/inicio">
         <div class="sidebar-brand-icon rotate-n-15">
             <i draggable="false" class="fas fa-solid fa-teeth-open"></i>
         </div>
@@ -15,7 +15,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a draggable="false" class="nav-link" href="index.jsp">
+        <a draggable="false" class="nav-link" href="/inicio">
             <i class="fas fa-solid fa-bars"></i>
             <span>Menú</span></a>
     </li>
@@ -38,8 +38,8 @@
         <div id="collapseOdo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Acciones:</h6>
-                <a class="collapse-item" href="SvOdontologos">Ver Odontólogos</a>
-                <a class="collapse-item" href="altaOdontologos.jsp">Alta Odontólogos</a>
+                <a class="collapse-item" href="/odontologos">Ver Odontólogos</a>
+                <a class="collapse-item" href="/admin/odontologos/crear">Alta Odontólogos</a>
             </div>
         </div>
     </li>
@@ -55,8 +55,8 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Acciones:</h6>
-                <a class="collapse-item" href="SvPacientes">Ver Pacientes</a>
-                <a class="collapse-item" href="altaPacientes.jsp">Alta Pacientes</a>
+                <a class="collapse-item" href="/pacientes">Ver Pacientes</a>
+                <a class="collapse-item" href="/admin/pacientes/crear">Alta Pacientes</a>
             </div>
         </div>
     </li>
@@ -72,8 +72,8 @@
                 data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Acciones:</h6>
-                    <a class="collapse-item" href="SvUsuarios">Ver Usuarios</a>
-                    <a class="collapse-item" href="altaUsuarios.jsp">Alta Usuarios</a>
+                    <a class="collapse-item" href="/usuarios">Ver Usuarios</a>
+                    <a class="collapse-item" href="/admin/usuarios/crear">Alta Usuarios</a>
                 </div>
             </div>
         </li>
@@ -88,7 +88,7 @@
 
     <!-- Sidebar Message -->
     <div class="sidebar-card d-none d-lg-flex">
-        <img draggable="false" class="sidebar-card-illustration mb-2" src="img/male-programmer-svgrepo-com.svg" alt="Imagen SVG de un desarrollador">
+        <img draggable="false" class="sidebar-card-illustration mb-2" src="${pageContext.request.contextPath}/img/male-programmer-svgrepo-com.svg" alt="Imagen SVG de un desarrollador">
         <p class="text-center mb-2">Desarrollado por<br><strong>Germán Lagger.</strong></p>
         <a draggable="false" class="btn btn-success btn-sm" href="https://germanlagger.dev.ar">Portfolio</a>
     </div>

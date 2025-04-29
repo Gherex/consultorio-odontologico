@@ -4,15 +4,6 @@
 <%@include file="components/header.jsp"%>
 <body id="page-top">
 
-    <!-- Validación de sesión -->
-    <%
-        HttpSession miSesion = request.getSession();
-        String usuario = (String) request.getSession().getAttribute("usuario");
-        if (usuario==null){
-            response.sendRedirect("sinLogin.jsp");
-        }
-    %>
-
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -37,6 +28,7 @@
                     <img src="https://cdn.euroinnova.edu.es/img/subidasEditor/cual-es-la-diferencia-entre-un-dentista-y-un-odontologo-2-1596471046.jpg"
                          alt="Imagen de un odontólogo"
                          style="width: 60%; padding-bottom: 16px;"
+                         draggable="false"
                     />
 
                 </div>
@@ -72,28 +64,28 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="/login">Logout</a>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="${pageContext.request.contextPath}/vendor/jquery/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="${pageContext.request.contextPath}/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="${pageContext.request.contextPath}/vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="${pageContext.request.contextPath}/js/demo/chart-area-demo.js"></script>
+    <script src="${pageContext.request.contextPath}/js/demo/chart-pie-demo.js"></script>
 
 </body>
 
