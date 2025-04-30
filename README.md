@@ -53,7 +53,7 @@ Cada entidad está relacionada adecuadamente para representar las operaciones de
 ## 📷 Capturas de pantalla
 
 ![Login](images/login.png)
-![Home](images/home.png)
+![Home](images/home-page.png)
 ![Usuarios](images/ver-usuarios.png)
 ![Secretarios](images/ver-secretarios.png)
 ![Alta de Odontólogos](images/alta-odontologos.png)
