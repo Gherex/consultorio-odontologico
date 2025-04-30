@@ -1,8 +1,6 @@
 package com.gherex.servlets;
 
-import com.gherex.logic.Horario;
 import com.gherex.logic.LogicController;
-import com.gherex.logic.Turno;
 import com.gherex.logic.Usuario;
 
 import javax.servlet.ServletException;
@@ -13,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -25,6 +22,8 @@ public class SvCrearOdontologo extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        List<Usuario> usuariosDisponibles = logicControl.getUsuarios();
+        request.setAttribute("usuariosDisponibles", usuariosDisponibles);
         request.getRequestDispatcher("/altaOdontologos.jsp").forward(request, response);
     }
 
@@ -49,12 +48,14 @@ public class SvCrearOdontologo extends HttpServlet {
             e.printStackTrace();
         }
 
-        // de momento voy a crear lo que falta vacío:
-        Usuario unUsuario = new Usuario();
-        Horario unHorario = new Horario();
-        List<Turno> listaTurnos = new ArrayList<>();
+        String horaInicio = request.getParameter("horaInicio");
+        String horaFin = request.getParameter("horaFin");
 
-        logicControl.crearOdontologo(nombre, apellido, dni, telefono, direccion, fechaNac, especialidad, unUsuario, unHorario);
+        String idUsuarioStr = request.getParameter("usuario");
+        int idUsuario = Integer.parseInt(idUsuarioStr);
+        Usuario unUsuario = logicControl.getUsuario(idUsuario);
+
+        logicControl.crearOdontologo(nombre, apellido, dni, telefono, direccion, fechaNac, especialidad, unUsuario, horaInicio, horaFin);
 
         response.sendRedirect(request.getContextPath() + "/odontologos");
     }

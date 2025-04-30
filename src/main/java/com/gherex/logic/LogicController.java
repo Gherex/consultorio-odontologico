@@ -1,6 +1,7 @@
 package com.gherex.logic;
 
 import com.gherex.persistence.PersistenceController;
+import com.gherex.utils.DateUtils;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -39,9 +40,18 @@ public class LogicController {
         return persisControl.getAllOdontologos();
     }
 
-    public void crearOdontologo(String nombre, String apellido, String dni, String telefono, String direccion, Date fechaNac, String especialidad, Usuario unUsuario, Horario unHorario) {
-        Odontologo odo = new Odontologo(dni, nombre, apellido, telefono, direccion, fechaNac, especialidad, unUsuario, unHorario);
-        persisControl.createOdontologo(odo);
+    public void crearOdontologo(String nombre, String apellido, String dni, String telefono, String direccion, Date fechaNac, String especialidad, Usuario unUsuario, String horarioInicio, String horarioFin) {
+
+        int horaIni = Integer.parseInt(horarioInicio);
+        int horaFin = Integer.parseInt(horarioFin);
+
+        if (horaIni >= 8 && horaFin <= 20) {
+            Horario horario = new Horario(horarioInicio, horarioFin);
+            Odontologo odo = new Odontologo(dni, nombre, apellido, telefono, direccion, fechaNac, especialidad, unUsuario, horario);
+            persisControl.createOdontologo(odo); // persiste odontólogo + horario (por cascade)
+        } else {
+            throw new IllegalArgumentException("El horario debe estar en el rango 08:00 a 20:00");
+        }
     }
 
     public void eliminarOdontologo(Integer id) {
@@ -60,8 +70,8 @@ public class LogicController {
         return persisControl.getAllPacientes();
     }
 
-    public void crearPaciente(String nombre, String apellido, String dni, String telefono, String direccion, Date fechaNac, boolean tieneObraSocial, String tipoSangre, Responsable responsable, List<Turno> listaTurnos) {
-        Paciente pac = new Paciente(dni, nombre, apellido, telefono, direccion, fechaNac, tieneObraSocial, tipoSangre, responsable, listaTurnos);
+    public void crearPaciente(String nombre, String apellido, String dni, String telefono, String direccion, Date fechaNac, boolean tieneObraSocial, String tipoSangre, Responsable responsable) {
+        Paciente pac = new Paciente(dni, nombre, apellido, telefono, direccion, fechaNac, tieneObraSocial, tipoSangre, responsable);
         persisControl.createPaciente(pac);
     }
 
@@ -124,5 +134,13 @@ public class LogicController {
 
     public void eliminarSecretario(Integer id) {
         persisControl.deleteSecretario(id);
+    }
+
+    public void crearResponsable(Responsable res) {
+        if (DateUtils.calcularEdad(res.getFechaNacimiento()) >= 18) { // tiene que ser mayor de edad
+            persisControl.createResponsable(res);
+        } else {
+            throw new IllegalArgumentException("Un responsable debe ser mayor de edad");
+        }
     }
 }

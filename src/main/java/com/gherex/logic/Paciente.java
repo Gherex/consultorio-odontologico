@@ -2,6 +2,7 @@ package com.gherex.logic;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -23,12 +24,13 @@ public class Paciente extends Persona {
     public Paciente() {
     }
 
-    public Paciente(String dni, String nombre, String apellido, String telefono, String direccion, Date fechaNacimiento, boolean tieneObraSocial, String tipoSangre, Responsable unResponsable, List<Turno> listaTurnos) {
+    public Paciente(String dni, String nombre, String apellido, String telefono, String direccion, Date fechaNacimiento, boolean tieneObraSocial, String tipoSangre, Responsable unResponsable) {
         super(dni, nombre, apellido, telefono, direccion, fechaNacimiento);
         this.tieneObraSocial = tieneObraSocial;
         this.tipoSangre = tipoSangre;
         this.unResponsable = unResponsable;
-        this.listaTurnos = listaTurnos;
+
+        this.listaTurnos = new ArrayList<Turno>(); //creo un array vacío y luego ya añado los turnos
     }
 
     public boolean isTieneObraSocial() {
@@ -61,5 +63,9 @@ public class Paciente extends Persona {
 
     public void setListaTurnos(List<Turno> listaTurnos) {
         this.listaTurnos = listaTurnos;
+    }
+
+    public void addTurno(Turno turno) {
+        listaTurnos.add(turno);
     }
 }

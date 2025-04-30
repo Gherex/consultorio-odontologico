@@ -1,7 +1,6 @@
 package com.gherex.servlets;
 
-import com.gherex.logic.LogicController;
-import com.gherex.logic.Odontologo;
+import com.gherex.logic.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,6 +13,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @WebServlet(name = "SvEditarOdontologo", urlPatterns = {"/admin/odontologos/editar"})
 public class SvEditarOdontologo extends HttpServlet {
@@ -24,14 +24,17 @@ public class SvEditarOdontologo extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        List<Usuario> usuariosDisponibles = logicControl.getUsuarios();
+        request.setAttribute("usuariosDisponibles", usuariosDisponibles);
+
         Integer id = Integer.parseInt(request.getParameter("id"));
 
         Odontologo odo = logicControl.getOdontologo(id);
 
-        HttpSession miSesion = request.getSession();
-        miSesion.setAttribute("odoEdit",odo);
+        HttpSession session = request.getSession();
+        session.setAttribute("odoEdit", odo);
 
-        response.sendRedirect("editarOdontologo.jsp");
+        request.getRequestDispatcher("/editarOdontologo.jsp").forward(request, response);
     }
 
     @Override
@@ -46,19 +49,23 @@ public class SvEditarOdontologo extends HttpServlet {
         String newTelefono = request.getParameter("telefono");
         String newDireccion = request.getParameter("direccion");
         String newEspecialidad = request.getParameter("especialidad");
-        // String newListaTurnos = request.getParameter("listaTurnos");
-        // String newUsuario = request.getParameter("usuario");
-        // String newHorario = request.getParameter("horario");
+        String newHoraInicio = request.getParameter("horaInicio");
+        String newHoraFin = request.getParameter("horaFin");
+
+        String newIdUsuarioStr = request.getParameter("usuario");
+        int newIdUsuario = Integer.parseInt(newIdUsuarioStr);
+        Usuario newUsuario = logicControl.getUsuario(newIdUsuario);
 
         String fechaNacStr = request.getParameter("fechaNac");
         Date fechaNac = null;
-
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             fechaNac = sdf.parse(fechaNacStr);
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
+        Horario newHorario = new Horario(newHoraInicio, newHoraFin);
 
         odo.setNombre(newNombre);
         odo.setApellido(newApellido);
@@ -67,9 +74,12 @@ public class SvEditarOdontologo extends HttpServlet {
         odo.setDireccion(newDireccion);
         odo.setFechaNacimiento(fechaNac);
         odo.setEspecialidad(newEspecialidad);
+        odo.setUnUsuario(newUsuario);
+        odo.setUnHorario(newHorario);
 
         logicControl.modificarOdontologo(odo);
 
         response.sendRedirect(request.getContextPath() + "/odontologos");
+
     }
 }

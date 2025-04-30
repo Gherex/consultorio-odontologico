@@ -32,7 +32,7 @@ public class SvEditarPaciente extends HttpServlet {
         HttpSession miSesion = request.getSession();
         miSesion.setAttribute("pacEdit", pac);
 
-        response.sendRedirect("editarPacientes.jsp");
+        response.sendRedirect("/editarPacientes.jsp");
     }
 
     @Override

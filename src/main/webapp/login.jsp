@@ -55,11 +55,11 @@
                                         <div class="form-group">
                                             <input type="usuario" class="form-control form-control-user"
                                                 id="usuario" name="usuario" aria-describedby="emailHelp"
-                                                placeholder="Usuario">
+                                                placeholder="Usuario" required>
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                                id="password" name="password" placeholder="Contraseña">
+                                                id="password" name="password" placeholder="Contraseña" required>
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Login

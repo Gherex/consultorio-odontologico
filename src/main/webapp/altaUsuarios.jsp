@@ -12,17 +12,17 @@
 
                 <div class="col-sm-12 mb-3">
                     <input type="text" class="form-control form-control-user" id="usuario" name="usuario"
-                        placeholder="Usuario">
+                        placeholder="Usuario" required>
                 </div>
 
                 <div class="col-sm-12 mb-3">
                     <input type="password" class="form-control form-control-user" id="contrasenia" name="contrasenia"
-                        placeholder="Contraseña">
+                        placeholder="Contraseña" required>
                 </div>
 
                 <div class="col-sm-12 mb-3">
                     <input type="text" class="form-control form-control-user" id="rol" name="rol"
-                        placeholder="Rol">
+                        placeholder="Rol" required>
                 </div>
             </div>
 

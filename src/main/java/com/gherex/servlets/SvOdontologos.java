@@ -25,7 +25,7 @@ public class SvOdontologos extends HttpServlet {
         listaOdontologos = logicControl.getOdontologos();
 
         request.setAttribute("listaOdontologos", listaOdontologos);
-        request.getRequestDispatcher("verOdontologos.jsp").forward(request, response);
+        request.getRequestDispatcher("/verOdontologos.jsp").forward(request, response);
     }
 
     @Override

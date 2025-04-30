@@ -25,7 +25,7 @@ public class SvSecretarios extends HttpServlet {
         listaSecretarios = logicControl.getSecretarios();
 
         request.setAttribute("listaSecretarios", listaSecretarios);
-        request.getRequestDispatcher("verSecretarios.jsp").forward(request, response);
+        request.getRequestDispatcher("/verSecretarios.jsp").forward(request, response);
     }
 
     @Override

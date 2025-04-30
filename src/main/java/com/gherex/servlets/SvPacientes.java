@@ -24,7 +24,7 @@ public class SvPacientes extends HttpServlet {
         List<Paciente> listaPacientes = logicControl.getPacientes();
 
         request.setAttribute("listaPacientes", listaPacientes);
-        request.getRequestDispatcher("verPacientes.jsp").forward(request, response);
+        request.getRequestDispatcher("/verPacientes.jsp").forward(request, response);
     }
 
 

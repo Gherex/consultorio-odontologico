@@ -19,7 +19,7 @@ public class Odontologo extends Persona {
     @JoinColumn(name = "usuario_id") // FK hacia Usuario
     private Usuario unUsuario;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "horario_id") // FK hacia Horario
     private Horario unHorario;
 

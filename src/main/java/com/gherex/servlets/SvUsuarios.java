@@ -26,7 +26,7 @@ public class SvUsuarios extends HttpServlet {
         listaUsuarios = logicControl.getUsuarios();
 
         request.setAttribute("listaUsuarios", listaUsuarios);
-        request.getRequestDispatcher("verUsuarios.jsp").forward(request, response);
+        request.getRequestDispatcher("/verUsuarios.jsp").forward(request, response);
     }
 
     @Override

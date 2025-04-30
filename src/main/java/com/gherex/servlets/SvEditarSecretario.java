@@ -2,6 +2,7 @@ package com.gherex.servlets;
 
 import com.gherex.logic.LogicController;
 import com.gherex.logic.Secretario;
+import com.gherex.logic.Usuario;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,6 +15,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @WebServlet(name = "SvEditarSecretario", urlPatterns = {"/admin/secretarios/editar"})
 public class SvEditarSecretario extends HttpServlet {
@@ -24,14 +26,17 @@ public class SvEditarSecretario extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        List<Usuario> usuariosDisponibles = logicControl.getUsuarios();
+        request.setAttribute("usuariosDisponibles", usuariosDisponibles);
+
         Integer id = Integer.parseInt(request.getParameter("id"));
 
         Secretario sec = logicControl.getSecretario(id);
 
-        HttpSession miSesion = request.getSession();
-        miSesion.setAttribute("secEdit", sec);
+        HttpSession session = request.getSession();
+        session.setAttribute("secEdit", sec);
 
-        response.sendRedirect("editarSecretario.jsp");
+        request.getRequestDispatcher("/editarSecretario.jsp").forward(request, response);
     }
 
     @Override
@@ -46,11 +51,13 @@ public class SvEditarSecretario extends HttpServlet {
         String newTelefono = request.getParameter("telefono");
         String newDireccion = request.getParameter("direccion");
         String newSector = request.getParameter("sector");
-        // String newUsuario = request.getParameter("usuario");
+
+        String newIdUsuarioStr = request.getParameter("usuario");
+        int newIdUsuario = Integer.parseInt(newIdUsuarioStr);
+        Usuario newUsuario = logicControl.getUsuario(newIdUsuario);
 
         String fechaNacStr = request.getParameter("fechaNac");
         Date fechaNac = null;
-
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             fechaNac = sdf.parse(fechaNacStr);
@@ -65,6 +72,7 @@ public class SvEditarSecretario extends HttpServlet {
         sec.setDireccion(newDireccion);
         sec.setFechaNacimiento(fechaNac);
         sec.setSector(newSector);
+        sec.setUnUsuario(newUsuario);
 
         logicControl.modificarSecretario(sec);
 

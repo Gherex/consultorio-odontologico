@@ -1,22 +1,19 @@
 package com.gherex.servlets;
 
 import com.gherex.logic.LogicController;
-import com.gherex.logic.Paciente;
-import com.gherex.logic.Responsable;
-import com.gherex.logic.Turno;
+import com.gherex.utils.DateUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @WebServlet(name = "SvCrearPaciente", urlPatterns = {"/admin/pacientes/crear"})
 public class SvCrearPaciente extends HttpServlet {
@@ -40,11 +37,9 @@ public class SvCrearPaciente extends HttpServlet {
         String direccion = request.getParameter("direccion");
 
         String tieneObraSocialStr = request.getParameter("tieneObraSocial");
-        boolean tieneObraSocial;
-        tieneObraSocial = tieneObraSocialStr.equals("Sí");
+        boolean tieneObraSocial = Boolean.parseBoolean(tieneObraSocialStr);
 
         String tipoSangre = request.getParameter("tipoSangre");
-        // String responsable = request.getParameter("responsable");
 
         String fechaNacStr = request.getParameter("fechaNac");
         Date fechaNac = null;
@@ -56,13 +51,24 @@ public class SvCrearPaciente extends HttpServlet {
             e.printStackTrace();
         }
 
-        // de momento voy a crear lo que falta vacío:
-        Responsable responsable = new Responsable();
-        List<Turno> listaTurnos = new ArrayList<>();
+        int edad = DateUtils.calcularEdad(fechaNac);
 
-        logicControl.crearPaciente(nombre, apellido, dni, telefono, direccion, fechaNac, tieneObraSocial, tipoSangre, responsable, listaTurnos);
+        if (edad >= 18) {
+            logicControl.crearPaciente(nombre, apellido, dni, telefono, direccion, fechaNac, tieneObraSocial, tipoSangre, null);
+            response.sendRedirect(request.getContextPath() + "/pacientes");
+        } else {
+            HttpSession session = request.getSession();
+            session.setAttribute("nombrePaciente", nombre);
+            session.setAttribute("apellidoPaciente", apellido);
+            session.setAttribute("dniPaciente", dni);
+            session.setAttribute("telefonoPaciente", telefono);
+            session.setAttribute("direccionPaciente", direccion);
+            session.setAttribute("fechaNacimientoPaciente", fechaNac);
+            session.setAttribute("tieneObraSocialPaciente", tieneObraSocial);
+            session.setAttribute("tipoSangrePaciente", tipoSangre);
 
-        response.sendRedirect(request.getContextPath() + "/pacientes");
+            response.sendRedirect(request.getContextPath() + "/admin/responsables/crear");
+        }
 
     }
 }

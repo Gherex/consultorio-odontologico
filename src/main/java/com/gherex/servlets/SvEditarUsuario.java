@@ -25,10 +25,9 @@ public class SvEditarUsuario extends HttpServlet {
 
         Usuario usu = logicControl.getUsuario(id);
 
-        HttpSession miSesion = request.getSession();
-        miSesion.setAttribute("usuEdit",usu);
-
-        response.sendRedirect("editarUsuarios.jsp");
+        HttpSession session = request.getSession();
+        session.setAttribute("usuEdit", usu);
+        request.getRequestDispatcher("/editarUsuario.jsp").forward(request, response);
     }
 
     @Override
@@ -41,11 +40,13 @@ public class SvEditarUsuario extends HttpServlet {
         String newPass = request.getParameter("contrasenia");
         String newRol = request.getParameter("rol");
 
-        usu.setNombreUsuario(newUser);
-        usu.setContrasenia(newPass);
-        usu.setRol(newRol);
+        if (usu != null) {
+            usu.setNombreUsuario(newUser);
+            usu.setContrasenia(newPass);
+            usu.setRol(newRol);
 
-        logicControl.modificarUsuario(usu);
+            logicControl.modificarUsuario(usu);
+        }
 
         response.sendRedirect(request.getContextPath() + "/usuarios");
 

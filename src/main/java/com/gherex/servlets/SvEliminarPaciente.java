@@ -27,6 +27,6 @@ public class SvEliminarPaciente extends HttpServlet {
         Integer id = Integer.parseInt(request.getParameter("id"));
         logicControl.eliminarPaciente(id);
 
-        response.sendRedirect("SvPacientes");
+        response.sendRedirect(request.getContextPath() + "/pacientes");
     }
 }

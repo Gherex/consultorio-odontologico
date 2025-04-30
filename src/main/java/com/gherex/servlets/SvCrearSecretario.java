@@ -40,7 +40,6 @@ public class SvCrearSecretario extends HttpServlet {
 
         String fechaNacStr = request.getParameter("fechaNac");
         Date fechaNac = null;
-
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             fechaNac = sdf.parse(fechaNacStr);
@@ -48,12 +47,14 @@ public class SvCrearSecretario extends HttpServlet {
             e.printStackTrace();
         }
 
-        // de momento voy a crear lo que falta vacío:
-        Usuario unUsuario = new Usuario();
+        String idUsuarioStr = request.getParameter("usuario");
+        int idUsuario = Integer.parseInt(idUsuarioStr);
+        Usuario unUsuario = logicControl.getUsuario(idUsuario);
 
         logicControl.crearSecretario(nombre, apellido, dni, telefono, direccion, fechaNac, sector, unUsuario);
 
         response.sendRedirect(request.getContextPath() + "/secretarios");
     }
+
 
 }

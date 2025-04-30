@@ -17,17 +17,17 @@
 
                 <div class="col-sm-12 mb-3">
                     <input type="text" class="form-control form-control-user" id="usuario" name="usuario"
-                        placeholder="Usuario" value="<%= usu.getNombreUsuario() %>">
+                        placeholder="Usuario" value="<%= usu.getNombreUsuario() %>" required>
                 </div>
 
                 <div class="col-sm-12 mb-3">
                     <input type="password" class="form-control form-control-user" id="contrasenia" name="contrasenia"
-                        placeholder="Contraseña" value="<%= usu.getContrasenia() %>">
+                        placeholder="Contraseña" value="<%= usu.getContrasenia() %>" required>
                 </div>
 
                 <div class="col-sm-12 mb-3">
                     <input type="text" class="form-control form-control-user" id="rol" name="rol"
-                        placeholder="Rol" value="<%= usu.getRol() %>">
+                        placeholder="Rol" value="<%= usu.getRol() %>" required>
                 </div>
             </div>
 

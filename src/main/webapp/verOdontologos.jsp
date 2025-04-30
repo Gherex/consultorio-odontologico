@@ -38,8 +38,8 @@
                     %>
                         <tr>
                             <td><%= odo.getIdPersona() %></td>
-                            <td><%= odo.getUnUsuario() %></td>
-                            <td><%= odo.getUnHorario() %></td>
+                            <td><%= odo.getUnUsuario().getId() %></td>
+                            <td><%= odo.getUnHorario().getId() %></td>
                             <td><%= odo.getEspecialidad() %></td>
 
                             <td style="display: flex; width: 230px;">
