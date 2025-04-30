@@ -7,7 +7,7 @@
     <p class="mb-3">Este es el apartado para dar de alta los diferentes usuarios del sistema.</p>
 
     <div class="container pt-4 w-50">
-        <form class="user" action="admin/usuarios/crear" method="POST">
+        <form class="user" action="/admin/usuarios/crear" method="POST">
             <div class="form-group">
 
                 <div class="col-sm-12 mb-3">

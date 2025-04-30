@@ -39,8 +39,8 @@ public class LogicController {
         return persisControl.getAllOdontologos();
     }
 
-    public void crearOdontologo(String nombre, String apellido, String dni, String telefono, String direccion, Date fechaNac, String especialidad, List<Turno> listaTurnos, Usuario unUsuario, Horario unHorario) {
-        Odontologo odo = new Odontologo(dni, nombre, apellido, telefono, direccion, fechaNac, especialidad, listaTurnos, unUsuario, unHorario);
+    public void crearOdontologo(String nombre, String apellido, String dni, String telefono, String direccion, Date fechaNac, String especialidad, Usuario unUsuario, Horario unHorario) {
+        Odontologo odo = new Odontologo(dni, nombre, apellido, telefono, direccion, fechaNac, especialidad, unUsuario, unHorario);
         persisControl.createOdontologo(odo);
     }
 
@@ -103,5 +103,26 @@ public class LogicController {
         }
 
         return "guest";
+    }
+
+    public List<Secretario> getSecretarios() {
+        return persisControl.getAllSecretarios();
+    }
+
+    public void crearSecretario(String nombre, String apellido, String dni, String telefono, String direccion, Date fechaNac, String sector, Usuario unUsuario) {
+        Secretario sec = new Secretario(dni, nombre, apellido, telefono, direccion, fechaNac, sector, unUsuario);
+        persisControl.createSecretario(sec);
+    }
+
+    public Secretario getSecretario(Integer id) {
+        return persisControl.getSecretario(id);
+    }
+
+    public void modificarSecretario(Secretario sec) {
+        persisControl.updateSecretario(sec);
+    }
+
+    public void eliminarSecretario(Integer id) {
+        persisControl.deleteSecretario(id);
     }
 }

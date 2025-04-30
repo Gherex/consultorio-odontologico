@@ -44,6 +44,23 @@
         </div>
     </li>
 
+    <!-- Nav Item - Secretarios Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSec"
+            aria-expanded="true" aria-controls="collapseSec">
+            <i class="fas fa-regular fa-address-book"></i>
+            <span>Secretarios</span>
+        </a>
+        <div id="collapseSec" class="collapse" aria-labelledby="headingUtilities"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Acciones:</h6>
+                <a class="collapse-item" href="/secretarios">Ver Secretarios</a>
+                <a class="collapse-item" href="/admin/secretarios/crear">Alta Secretarios</a>
+            </div>
+        </div>
+    </li>
+
     <!-- Nav Item - Pacientes Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePac"
@@ -62,21 +79,21 @@
     </li>
 
     <!-- Nav Item - Usuarios Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsu"
-                aria-expanded="true" aria-controls="collapseUsu">
-                <i class="fas fa-solid fa-user-plus"></i>
-                <span>Usuarios</span>
-            </a>
-            <div id="collapseUsu" class="collapse" aria-labelledby="headingUtilities"
-                data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Acciones:</h6>
-                    <a class="collapse-item" href="/usuarios">Ver Usuarios</a>
-                    <a class="collapse-item" href="/admin/usuarios/crear">Alta Usuarios</a>
-                </div>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsu"
+            aria-expanded="true" aria-controls="collapseUsu">
+            <i class="fas fa-solid fa-user-plus"></i>
+            <span>Usuarios</span>
+        </a>
+        <div id="collapseUsu" class="collapse" aria-labelledby="headingUtilities"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Acciones:</h6>
+                <a class="collapse-item" href="/usuarios">Ver Usuarios</a>
+                <a class="collapse-item" href="/admin/usuarios/crear">Alta Usuarios</a>
             </div>
-        </li>
+        </div>
+    </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider">

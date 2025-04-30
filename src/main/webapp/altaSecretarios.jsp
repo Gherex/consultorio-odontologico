@@ -4,11 +4,11 @@
     <%@include file="components/header.jsp"%>
     <%@include file="components/wrapper-top-content.jsp"%>
 
-    <h1>Alta Odontólogos</h1>
-    <p class="mb-3">Este es el apartado para dar de alta los diferentes odontólogos del sistema.</p>
+    <h1>Alta Secretarios</h1>
+    <p class="mb-3">Este es el apartado para dar de alta los diferentes secretarios del sistema.</p>
 
     <div class="container pt-4 w-50">
-        <form class="user" action="/admin/odontologos/crear" method="POST">
+        <form class="user" action="/admin/secretarios/crear" method="POST">
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                     <input type="text" class="form-control form-control-user" id="nombre" name="nombre"
@@ -39,23 +39,27 @@
                         placeholder="Fecha de nacimiento">
                 </div>
             </div>
-            <div class="form-group">
-                <input type="text" class="form-control form-control-user" id="especialidad" name="especialidad"
-                    placeholder="Especialidad">
-            </div>
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user" id="usuario" name="usuario"
-                        placeholder="Usuario">
+                    <input type="text" class="form-control form-control-user" id="sector" name="sector"
+                        placeholder="Sector">
                 </div>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control form-control-user" id="horario" name="horario"
-                        placeholder="Horario">
+                    <select class="form-control form-control-user" id="usuario" name="usuario">
+                        <option value="">-- Seleccionar Usuario --</option>
+                        <%
+                        List<Usuario> usuariosDisponibles = (List<Usuario>) request.getAttribute("usuariosDisponibles");
+                        for (Usuario usu : usuariosDisponibles) {
+                        %>
+                        <option value="<%= usu.getId() %>"><%= usu.getNombreUsuario() %></option>
+                        <% } %>
+                    </select>
                 </div>
+
             </div>
 
             <button class="btn btn-primary btn-user btn-block mt-4" type="submit">
-                Crear Odontólogo
+                Crear Secretario
             </button>
 
         </form>

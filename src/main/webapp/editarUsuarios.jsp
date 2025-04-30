@@ -8,7 +8,7 @@
     <p class="mb-3">Este es el apartado para modificar un usuario del sistema.</p>
 
     <div class="container pt-4 w-50">
-        <form class="user" action="admin/usuarios/editar" method="POST">
+        <form class="user" action="/admin/usuarios/editar" method="POST">
             <div class="form-group">
 
                 <%

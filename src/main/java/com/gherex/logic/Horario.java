@@ -18,8 +18,14 @@ public class Horario {
     }
 
     public Horario(String horarioInicio, String horarioFin) {
-        this.horarioInicio = horarioInicio;
-        this.horarioFin = horarioFin;
+
+        int horaIni = Integer.parseInt(horarioInicio);
+        int horaFin = Integer.parseInt(horarioFin);
+
+        if (horaIni >= 8 && horaFin <= 20) { // En el rango 08:00 a 20:00
+            this.horarioInicio = horarioInicio;
+            this.horarioFin = horarioFin;
+        }
     }
 
     public Integer getId() {

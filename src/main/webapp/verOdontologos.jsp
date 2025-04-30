@@ -43,13 +43,13 @@
                             <td><%= odo.getEspecialidad() %></td>
 
                             <td style="display: flex; width: 230px;">
-                                <form name="eliminar" action="admin/odontologos/eliminar" method="POST">
+                                <form name="eliminar" action="/admin/odontologos/eliminar" method="POST">
                                     <button type="submit" class="btn btn-primary btn-user btn-block" style="background-color: #cd4848; margin-right: 5px; width: 110px;">
                                         <i class="fas fa-trash-alt"></i> Eliminar
                                     </button>
                                     <input type="hidden" name="id" value="<%= odo.getIdPersona() %>"> <!-- esto es para mandar info al servlet -->
                                 </form>
-                                <form name="editar" action="admin/odontologos/editar" method="GET">
+                                <form name="editar" action="/admin/odontologos/editar" method="GET">
                                     <button type="submit" class="btn btn-primary btn-user btn-block" style="margin-left: 5px; width: 110px;">
                                         <i class="fas fa-pencil-alt"></i> Editar
                                     </button>

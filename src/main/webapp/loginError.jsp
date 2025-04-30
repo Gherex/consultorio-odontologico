@@ -1,7 +1,6 @@
-<%@ page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
     <meta charset="utf-8">
@@ -51,7 +50,7 @@
                                     <br>
                                     <p><span style="color: darkred; font-weight:bold;">Error!</span> Usuario o contraseña incorrecto/s.</p>
                                     <br>
-                                    <a href="login" class="btn btn-primary btn-user btn-block">
+                                    <a href="/login" class="btn btn-primary btn-user btn-block">
                                         Regresar
                                     </a>
                                 </div>

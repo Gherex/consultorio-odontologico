@@ -26,12 +26,15 @@ public class Odontologo extends Persona {
     public Odontologo() {
     }
 
-    public Odontologo(String dni, String nombre, String apellido, String telefono, String direccion, Date fechaNacimiento, String especialidad, List<Turno> listaTurnos, Usuario unUsuario, Horario unHorario) {
+    public Odontologo(String dni, String nombre, String apellido, String telefono, String direccion, Date fechaNacimiento, String especialidad, Usuario unUsuario, Horario unHorario) {
         super(dni, nombre, apellido, telefono, direccion, fechaNacimiento);
         this.especialidad = especialidad;
-        this.listaTurnos = listaTurnos;
         this.unUsuario = unUsuario;
         this.unHorario = unHorario;
+    }
+
+    public boolean isTurnoDisponible(Turno turno) {
+        return true;
     }
 
     public String getEspecialidad() {
