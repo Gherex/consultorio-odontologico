@@ -30,6 +30,10 @@ public class SvCrearResponsable extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
+
         String resNombre = request.getParameter("nombre");
         String resApellido = request.getParameter("apellido");
         String resDni = request.getParameter("dni");

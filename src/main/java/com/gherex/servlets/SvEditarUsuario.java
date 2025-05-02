@@ -34,6 +34,10 @@ public class SvEditarUsuario extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
+
         Usuario usu = (Usuario) request.getSession().getAttribute("usuEdit");
 
         String newUser = request.getParameter("usuario");

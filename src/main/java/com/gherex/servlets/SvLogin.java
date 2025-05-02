@@ -20,6 +20,10 @@ public class SvLogin extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
+
         HttpSession miSesion = request.getSession();
         if (miSesion.getAttribute("usuario") != null) miSesion.removeAttribute("usuario");
         if (miSesion.getAttribute("rol") != null) miSesion.removeAttribute("rol");
@@ -29,6 +33,10 @@ public class SvLogin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
 
         String usuario = request.getParameter("usuario");
         String contrasenia = request.getParameter("password");

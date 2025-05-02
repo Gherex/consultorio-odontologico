@@ -25,6 +25,10 @@ public class SvCrearUsuario extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
+
         String nombreUsuario = request.getParameter("usuario");
         String contrasenia = request.getParameter("contrasenia");
         String rol = request.getParameter("rol");
