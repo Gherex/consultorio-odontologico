@@ -56,8 +56,6 @@ public class SvEditarPaciente extends HttpServlet {
         newTieneObraSocial = newTieneObraSocialStr.equals("Sí");
 
         String newTipoSangre = request.getParameter("tipoSangre");
-        // String newListaTurnos = request.getParameter("listaTurnos");
-        // String newResponsable = request.getParameter("responsable");
 
         String fechaNacStr = request.getParameter("fechaNac");
         Date fechaNac = null;
@@ -69,10 +67,6 @@ public class SvEditarPaciente extends HttpServlet {
             e.printStackTrace();
         }
 
-        // hago los dos vacios que me faltan de momento:
-        Responsable newResponsable = new Responsable();
-        List<Turno> listaTurnos = new ArrayList<>();
-
         pac.setNombre(newNombre);
         pac.setApellido(newApellido);
         pac.setDni(newDni);
@@ -81,8 +75,6 @@ public class SvEditarPaciente extends HttpServlet {
         pac.setFechaNacimiento(fechaNac);
         pac.setTieneObraSocial(newTieneObraSocial);
         pac.setTipoSangre(newTipoSangre);
-        pac.setUnResponsable(newResponsable);
-        pac.setListaTurnos(listaTurnos);
 
         logicControl.modificarPaciente(pac);
 

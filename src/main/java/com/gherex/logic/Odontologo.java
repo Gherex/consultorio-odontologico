@@ -2,7 +2,9 @@ package com.gherex.logic;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 @Entity
@@ -31,10 +33,8 @@ public class Odontologo extends Persona {
         this.especialidad = especialidad;
         this.unUsuario = unUsuario;
         this.unHorario = unHorario;
-    }
 
-    public boolean isTurnoDisponible(Turno turno) {
-        return true;
+        this.listaTurnos = new ArrayList<Turno>(); //creo un array vacío y luego ya añado los turnos
     }
 
     public String getEspecialidad() {
@@ -47,10 +47,6 @@ public class Odontologo extends Persona {
 
     public List<Turno> getListaTurnos() {
         return listaTurnos;
-    }
-
-    public void setListaTurnos(List<Turno> listaTurnos) {
-        this.listaTurnos = listaTurnos;
     }
 
     public Usuario getUnUsuario() {
@@ -68,4 +64,23 @@ public class Odontologo extends Persona {
     public void setUnHorario(Horario unHorario) {
         this.unHorario = unHorario;
     }
+
+    public void addTurno(Turno tur) {
+        this.listaTurnos.add(tur);
+    }
+
+    public void setListaTurnos(List<Turno> listaTurnos) {
+        this.listaTurnos = listaTurnos;
+    }
+
+    public void deleteTurno(Date fecha, String hora) {
+        Iterator<Turno> iter = listaTurnos.iterator();
+        while (iter.hasNext()) {
+            Turno tur = iter.next();
+            if (fecha.equals(tur.getFechaTurno()) && hora.equals(tur.getHoraTurno())) {
+                iter.remove();  // elimina el elemento de forma segura
+            }
+        }
+    }
+
 }

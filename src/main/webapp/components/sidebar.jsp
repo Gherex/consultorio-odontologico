@@ -95,6 +95,23 @@
         </div>
     </li>
 
+    <!-- Nav Item - Turnos Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTur"
+                aria-expanded="true" aria-controls="collapseTur">
+                <i class="fas fa-solid fa-thumbtack"></i>
+                <span>Turnos</span>
+            </a>
+            <div id="collapseTur" class="collapse" aria-labelledby="headingUtilities"
+                data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Acciones:</h6>
+                    <a class="collapse-item" href="/turnos">Ver Turnos</a>
+                    <a class="collapse-item" href="/admin/turnos/seleccionar-fecha">Alta Turnos</a>
+                </div>
+            </div>
+        </li>
+
     <!-- Divider -->
     <hr class="sidebar-divider">
 

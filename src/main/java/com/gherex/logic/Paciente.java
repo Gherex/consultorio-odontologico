@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 @Entity
@@ -18,7 +19,7 @@ public class Paciente extends Persona {
     @OneToOne
     @JoinColumn(name = "un_responsable")
     private Responsable unResponsable;
-    @OneToMany (mappedBy = "unPaciente")
+    @OneToMany(mappedBy = "unPaciente")
     private List<Turno> listaTurnos;
 
     public Paciente() {
@@ -61,11 +62,21 @@ public class Paciente extends Persona {
         return listaTurnos;
     }
 
+    public void addTurno(Turno turno) {
+        listaTurnos.add(turno);
+    }
+
     public void setListaTurnos(List<Turno> listaTurnos) {
         this.listaTurnos = listaTurnos;
     }
 
-    public void addTurno(Turno turno) {
-        listaTurnos.add(turno);
+    public void deleteTurno(Date fecha, String hora) {
+        Iterator<Turno> iter = listaTurnos.iterator();
+        while (iter.hasNext()) {
+            Turno tur = iter.next();
+            if (fecha.equals(tur.getFechaTurno()) && hora.equals(tur.getHoraTurno())) {
+                iter.remove();  // elimina el elemento de forma segura
+            }
+        }
     }
 }

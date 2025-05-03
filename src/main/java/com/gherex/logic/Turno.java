@@ -77,4 +77,5 @@ public class Turno {
     public void setAfeccion(String afeccion) {
         this.afeccion = afeccion;
     }
+
 }

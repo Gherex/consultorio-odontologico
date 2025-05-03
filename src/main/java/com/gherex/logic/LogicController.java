@@ -143,4 +143,62 @@ public class LogicController {
             throw new IllegalArgumentException("Un responsable debe ser mayor de edad");
         }
     }
+
+    public List<Odontologo> getOdontologosDisponibles(Date fechaSeleccionada, String horaSeleccionada) {
+
+        List<Odontologo> listaOdontologos = persisControl.getAllOdontologos();
+        List<Odontologo> listaOdontologosDisponibles = new ArrayList<>();
+        for (Odontologo odo : listaOdontologos) {
+            boolean turnoLibre = true;
+            if (odo.getListaTurnos() != null) {
+                for (Turno tur : odo.getListaTurnos()) {
+                    if (fechaSeleccionada.equals(tur.getFechaTurno()) && tur.getHoraTurno().equals(horaSeleccionada)) {
+                        turnoLibre = false;
+                    }
+                }
+                if (turnoLibre) listaOdontologosDisponibles.add(odo);
+            }
+        }
+        return listaOdontologosDisponibles;
+    }
+
+    public List<Turno> getTurnos() {
+        return persisControl.getAllTurnos();
+    }
+
+    public void crearTurno(Date fecha, String hora, Odontologo odontologo, Paciente paciente, String afeccion) {
+        Turno tur = new Turno(fecha, hora, afeccion, odontologo, paciente);
+
+        odontologo.addTurno(tur);
+        paciente.addTurno(tur);
+        persisControl.createTurno(tur);
+    }
+
+    public void eliminarTurno(Integer id) {
+        Turno turnoEliminado = persisControl.getTurno(id);
+        Date fecha = turnoEliminado.getFechaTurno();
+        String hora = turnoEliminado.getHoraTurno();
+        turnoEliminado.getUnOdontologo().deleteTurno(fecha, hora);
+        turnoEliminado.getUnPaciente().deleteTurno(fecha, hora);
+        persisControl.deleteTurno(id);
+    }
+
+    public Turno getTurno(Integer id) {
+        return persisControl.getTurno(id);
+    }
+
+    public void modificarTurno(Turno turnoModificado) {
+        Turno turnoOriginal = persisControl.getTurno(turnoModificado.getId());
+
+        // Eliminar el turno anterior de las listas
+        turnoOriginal.getUnOdontologo().deleteTurno(turnoOriginal.getFechaTurno(), turnoOriginal.getHoraTurno());
+        turnoOriginal.getUnPaciente().deleteTurno(turnoOriginal.getFechaTurno(), turnoOriginal.getHoraTurno());
+
+        // Agregar el nuevo turno a las nuevas listas
+        turnoModificado.getUnOdontologo().addTurno(turnoModificado);
+        turnoModificado.getUnPaciente().addTurno(turnoModificado);
+
+        persisControl.updateTurno(turnoModificado);
+    }
+
 }
