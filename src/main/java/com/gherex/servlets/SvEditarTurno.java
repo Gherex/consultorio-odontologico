@@ -7,11 +7,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @WebServlet(name = "SvEditarTurno", urlPatterns = {"/admin/turnos/editar"})
 public class SvEditarTurno extends HttpServlet {
@@ -21,7 +23,29 @@ public class SvEditarTurno extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
 
+        String fechaSelectStr = request.getParameter("fecha");
+        Date fechaSeleccionada = null;
+
+        String horaSeleccionada = request.getParameter("hora");
+
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            fechaSeleccionada = sdf.parse(fechaSelectStr);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        List<Odontologo> odontologosDisponibles = logicControl.getOdontologosDisponibles(fechaSeleccionada, horaSeleccionada);
+        List<Paciente> listaPacientes = logicControl.getPacientes();
+
+        request.setAttribute("listaOdontologosDisponibles", odontologosDisponibles);
+        request.setAttribute("listaPacientes", listaPacientes);
+
+        request.getRequestDispatcher("/editarTurno.jsp").forward(request, response);
     }
 
     @Override

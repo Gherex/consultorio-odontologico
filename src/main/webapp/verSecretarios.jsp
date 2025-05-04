@@ -18,7 +18,7 @@
                             <th>Persona ID</th>
                             <th>Usuario ID</th>
                             <th>Sector</th>
-                            <th style="width: 200px;">Acción</th>
+                            <% if ("Admin".equals(rol)) { %> <th style="width: 200px;">Acción</th> <%}%>
                         </tr>
                     </thead>
                     <tfoot>
@@ -26,7 +26,7 @@
                             <th>Persona ID</th>
                             <th>Usuario ID</th>
                             <th>Sector</th>
-                            <th style="width: 200px;">Acción</th>
+                            <% if ("Admin".equals(rol)) { %> <th style="width: 200px;">Acción</th> <%}%>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -39,20 +39,23 @@
                                     <td><%= sec.getIdPersona() %></td>
                                     <td><%= sec.getUnUsuario().getId() %></td>
                                     <td><%= sec.getSector() %></td>
-                                    <td style="display: flex; width: 230px;">
-                                        <form name="eliminar" action="/admin/secretarios/eliminar" method="POST">
-                                            <input type="hidden" name="id" value="<%= sec.getIdPersona() %>">
-                                            <button type="submit" class="btn btn-danger" style="width: 110px;">
-                                                <i class="fas fa-trash-alt"></i> Eliminar
-                                            </button>
-                                        </form>
-                                        <form name="editar" action="/admin/secretarios/editar" method="GET">
-                                            <input type="hidden" name="id" value="<%= sec.getIdPersona() %>">
-                                            <button type="submit" class="btn btn-primary" style="width: 110px; margin-left: 10px;">
-                                                <i class="fas fa-pencil-alt"></i> Editar
-                                            </button>
-                                        </form>
-                                    </td>
+
+                                    <% if ("Admin".equals(rol)) { %>
+                                        <td style="display: flex; width: 230px;">
+                                            <form name="eliminar" action="/admin/secretarios/eliminar" method="POST">
+                                                <input type="hidden" name="id" value="<%= sec.getIdPersona() %>">
+                                                <button type="submit" class="btn btn-danger" style="width: 110px;">
+                                                    <i class="fas fa-trash-alt"></i> Eliminar
+                                                </button>
+                                            </form>
+                                            <form name="editar" action="/admin/secretarios/editar" method="GET">
+                                                <input type="hidden" name="id" value="<%= sec.getIdPersona() %>">
+                                                <button type="submit" class="btn btn-primary" style="width: 110px; margin-left: 10px;">
+                                                    <i class="fas fa-pencil-alt"></i> Editar
+                                                </button>
+                                            </form>
+                                        </td>
+                                    <% } %>
                                 </tr>
                     <%
                             }

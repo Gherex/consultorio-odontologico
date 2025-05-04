@@ -19,7 +19,7 @@
                             <th>Responsable</th>
                             <th>Tipo de Sangre</th>
                             <th>Tiene Obra Social</th>
-                            <th style="width: 200px;">Acción</th>
+                            <% if ("Admin".equals(rol)) { %> <th style="width: 200px;">Acción</th> <%}%>
                         </tr>
                     </thead>
                     <tfoot>
@@ -28,7 +28,7 @@
                             <th>Responsable</th>
                             <th>Tipo de Sangre</th>
                             <th>Tiene Obra Social</th>
-                            <th style="width: 200px;">Acción</th>
+                            <% if ("Admin".equals(rol)) { %> <th style="width: 200px;">Acción</th> <%}%>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -37,11 +37,13 @@
                         if (listaPacientes != null) {
                             for (Paciente pac : listaPacientes) {
                     %>
-                                <tr>
-                                    <td><%= pac.getIdPersona() %></td>
-                                    <td><%= pac.getUnResponsable() != null ? pac.getUnResponsable().getIdPersona() : "Sin responsable" %></td>
-                                    <td><%= pac.getTipoSangre() %></td>
-                                    <td><%= pac.isTieneObraSocial() ? "Sí" : "No" %></td>
+                            <tr>
+                                <td><%= pac.getIdPersona() %></td>
+                                <td><%= pac.getUnResponsable() != null ? pac.getUnResponsable().getIdPersona() : "Sin responsable" %></td>
+                                <td><%= pac.getTipoSangre() %></td>
+                                <td><%= pac.isTieneObraSocial() ? "Sí" : "No" %></td>
+
+                                <% if ("Admin".equals(rol)) { %>
                                     <td style="display: flex; width: 230px;">
                                         <form name="eliminar" action="/admin/pacientes/eliminar" method="POST">
                                             <input type="hidden" name="id" value="<%= pac.getIdPersona() %>">
@@ -56,7 +58,8 @@
                                             </button>
                                         </form>
                                     </td>
-                                </tr>
+                                <% } %>
+                            </tr>
                     <%
                             }
                         } else {

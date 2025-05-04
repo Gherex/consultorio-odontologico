@@ -2,6 +2,10 @@
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
+    <%
+    String rol = (String) session.getAttribute("rol");
+    %>
+
     <!-- Sidebar - Brand -->
     <a draggable="false" class="sidebar-brand d-flex align-items-center justify-content-center" href="/inicio">
         <div class="sidebar-brand-icon rotate-n-15">
@@ -39,7 +43,9 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Acciones:</h6>
                 <a class="collapse-item" href="/odontologos">Ver Odontólogos</a>
-                <a class="collapse-item" href="/admin/odontologos/crear">Alta Odontólogos</a>
+                <% if ("Admin".equals(rol)) { %>
+                    <a class="collapse-item" href="/admin/odontologos/crear">Alta Odontólogos</a>
+                <% } %>
             </div>
         </div>
     </li>
@@ -56,7 +62,9 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Acciones:</h6>
                 <a class="collapse-item" href="/secretarios">Ver Secretarios</a>
-                <a class="collapse-item" href="/admin/secretarios/crear">Alta Secretarios</a>
+                <% if ("Admin".equals(rol)) { %>
+                    <a class="collapse-item" href="/admin/secretarios/crear">Alta Secretarios</a>
+                <% } %>
             </div>
         </div>
     </li>
@@ -73,7 +81,9 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Acciones:</h6>
                 <a class="collapse-item" href="/pacientes">Ver Pacientes</a>
-                <a class="collapse-item" href="/admin/pacientes/crear">Alta Pacientes</a>
+                <% if ("Admin".equals(rol)) { %>
+                    <a class="collapse-item" href="/admin/pacientes/crear">Alta Pacientes</a>
+                <% } %>
             </div>
         </div>
     </li>
@@ -90,7 +100,9 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Acciones:</h6>
                 <a class="collapse-item" href="/usuarios">Ver Usuarios</a>
-                <a class="collapse-item" href="/admin/usuarios/crear">Alta Usuarios</a>
+                <% if ("Admin".equals(rol)) { %>
+                    <a class="collapse-item" href="/admin/usuarios/crear">Alta Usuarios</a>
+                <% } %>
             </div>
         </div>
     </li>
@@ -107,7 +119,9 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Acciones:</h6>
                     <a class="collapse-item" href="/turnos">Ver Turnos</a>
-                    <a class="collapse-item" href="/admin/turnos/seleccionar-fecha">Alta Turnos</a>
+                    <% if ("Admin".equals(rol)) { %>
+                        <a class="collapse-item" href="/admin/turnos/seleccionar-fecha">Alta Turnos</a>
+                    <% } %>
                 </div>
             </div>
         </li>
